@@ -18,8 +18,15 @@ export const generateMetadata = async ({ params }: Props) => {
 const Page = async ({ params }: Props) => {
   const { cabinId } = await params;
   const cabin = await getCabin(cabinId);
-  const { id, name, maxCapacity, regularPrice, discount, image, description } =
-    cabin;
+  const {
+    // id,
+    name,
+    maxCapacity,
+    // regularPrice,
+    //  discount,
+    image,
+    description,
+  } = cabin;
 
   return (
     <div className='max-w-6xl mx-auto mt-8'>

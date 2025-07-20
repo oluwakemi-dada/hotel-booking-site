@@ -1,12 +1,13 @@
 import ReservationCard from '@/app/_components/ReservationCard';
+import { Booking } from '@/app/types';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Reservations',
 };
 
 const Page = () => {
-  // CHANGE
-  const bookings = [];
+  const bookings: Booking[] = [];
 
   return (
     <div>
@@ -17,9 +18,9 @@ const Page = () => {
       {bookings.length === 0 ? (
         <p className='text-lg'>
           You have no reservations yet. Check out our{' '}
-          <a className='underline text-accent-500' href='/cabins'>
+          <Link className='underline text-accent-500' href='/cabins'>
             luxury cabins &rarr;
-          </a>
+          </Link>
         </p>
       ) : (
         <ul className='space-y-6'>
