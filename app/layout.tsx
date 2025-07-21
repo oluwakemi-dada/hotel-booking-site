@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Josefin_Sans } from 'next/font/google';
 import Header from '@/app/_components/Header';
 import '@/app/_styles/globals.css';
+import { ReservationProvider } from './_context/ReservationContext';
 
 const josefin = Josefin_Sans({
   subsets: ['latin'],
@@ -29,7 +30,9 @@ const RootLayout = ({ children }: Props) => {
       >
         <Header />
         <div className="grid flex-1 px-8 py-12">
-          <main className="mx-auto w-full max-w-7xl">{children}</main>
+          <main className="mx-auto w-full max-w-7xl">
+            <ReservationProvider>{children}</ReservationProvider>
+          </main>
         </div>
       </body>
     </html>

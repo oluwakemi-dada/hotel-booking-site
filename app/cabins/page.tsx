@@ -2,6 +2,7 @@ import CabinList from '@/app/_components/CabinList';
 import Filter from '@/app/_components/Filter';
 import Spinner from '@/app/_components/Spinner';
 import { Suspense } from 'react';
+import ReservationReminder from '@/app/_components/ReservationReminder';
 
 export type Props = {
   searchParams: Promise<{
@@ -37,6 +38,7 @@ const Page = async ({ searchParams }: Props) => {
 
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
