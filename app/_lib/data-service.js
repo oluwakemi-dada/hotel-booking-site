@@ -77,7 +77,7 @@ export const getBookings = async (guestId) => {
   const { data, error } = await supabase
     .from('bookings')
     .select(
-      'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)'
+      'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)',
     )
     .eq('guestId', guestId)
     .order('startDate');
@@ -134,7 +134,7 @@ export const getSettings = async () => {
 export const getCountries = async () => {
   try {
     const res = await fetch(
-      'https://restcountries.com/v2/all?fields=name,flag'
+      'https://restcountries.com/v2/all?fields=name,flag',
     );
     const countries = await res.json();
     return countries;

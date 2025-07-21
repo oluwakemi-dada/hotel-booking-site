@@ -9,7 +9,7 @@ type Props = {
 
 type Country = {
   name: string;
-  flag: string
+  flag: string;
 };
 
 const SelectCountry = async ({
@@ -29,7 +29,7 @@ const SelectCountry = async ({
       defaultValue={`${defaultCountry}%${flag}`}
       className={className}
     >
-      <option value=''>Select country...</option>
+      <option value="">Select country...</option>
       {countries.map((c) => (
         <option key={c.name} value={`${c.name}%${c.flag}`}>
           {c.name}
