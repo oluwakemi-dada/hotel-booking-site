@@ -26,14 +26,15 @@
   --color-accent-950: #382814;
 }
 
+/* Custom component styles */
 @layer components {
   .spinner {
     margin: 3.2rem auto 1.6rem;
     width: 60px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 8px solid theme('colors.primary.900');
-    border-right-color: theme('colors.primary.200');
+    border: 8px solid var(--color-primary-900);
+    border-right-color: var(--color-primary-200);
     animation: rotate 1s infinite linear;
   }
 
@@ -42,7 +43,7 @@
     width: 20px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 2px solid theme('colors.primary.200');
+    border: 2px solid var(--color-primary-200);
     border-right-color: transparent;
     animation: rotate 1s infinite linear;
   }
@@ -54,10 +55,35 @@
   }
 }
 
-/* For data picker */
-.rdp {
-  --rdp-cell-size: 32px !important;
-  --rdp-accent-color: theme('colors.accent.500') !important;
-  --rdp-background-color: theme('colors.accent.600') !important;
-  margin: 0 !important;
+/* Custom styles for date picker */
+@layer components {
+  .rdp-root {
+    --rdp-accent-color: var(--color-accent-500) !important;
+    --rdp-background-color: var(--color-accent-500) !important;
+    --rdp-day-height: 32px !important;
+    --rdp-day-width: 32px !important;
+    --rdp-day_button-height: 32px !important;
+    --rdp-day_button-width: 32px !important;
+    --rdp-range_middle-background-color: var(--color-accent-500) !important;
+
+    .rdp-selected .rdp-day_button {
+      background-color: var(--color-accent-500) !important;
+    }
+
+    .rdp-nav {
+      display: none !important;
+    }
+
+    .rdp-dropdowns {
+      justify-content: center;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .rdp-chevron {
+      fill: var(--color-primary-50) !important;
+      width: 15px;
+      margin: 0 0 0 5px;
+    }
+  }
 }

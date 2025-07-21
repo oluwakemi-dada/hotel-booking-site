@@ -1,7 +1,7 @@
 import CabinList from '@/app/_components/CabinList';
-import { Suspense } from 'react';
-import Spinner from '@/app/_components/Spinner';
 import Filter from '@/app/_components/Filter';
+import Spinner from '@/app/_components/Spinner';
+import { Suspense } from 'react';
 
 export type Props = {
   searchParams: Promise<{
