@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+app/api/cabins
 
 # production
 /build

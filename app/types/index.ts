@@ -1,2 +1,4 @@
-export * from './cabins';
+export * from './auth';
 export * from './booking';
+export * from './cabins';
+

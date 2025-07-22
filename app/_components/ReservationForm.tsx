@@ -1,13 +1,14 @@
 'use client';
 
-import { Cabin } from '@/app/types';
+import { Cabin, User } from '@/app/types';
 import { useReservation } from '@/app/_context/ReservationContext';
 
 type Props = {
   cabin: Cabin;
+  user: User;
 };
 
-const ReservationForm = ({ cabin }: Props) => {
+const ReservationForm = ({ cabin, user }: Props) => {
   const { range } = useReservation();
 
   const { maxCapacity } = cabin;
@@ -17,20 +18,16 @@ const ReservationForm = ({ cabin }: Props) => {
       <div className="bg-primary-800 text-primary-300 flex items-center justify-between px-16 py-2">
         <p>Logged in as</p>
 
-        {/* <div className='flex gap-4 items-center'>
+        <div className="flex items-center gap-4">
           <img
-            // Important to display google profile images
-            referrerPolicy='no-referrer'
-            className='h-8 rounded-full'
+            referrerPolicy="no-referrer"
+            className="h-8 rounded-full"
             src={user.image}
             alt={user.name}
           />
           <p>{user.name}</p>
-        </div> */}
+        </div>
       </div>
-      <p>
-        {String(range?.from)} to {String(range?.to)}
-      </p>
 
       <form className="bg-primary-900 flex flex-col gap-5 px-16 py-10 text-lg">
         <div className="space-y-2">
