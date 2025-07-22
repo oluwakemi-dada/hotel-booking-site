@@ -9,19 +9,18 @@ const authConfig = {
     }),
   ],
   callbacks: {
-    authorized({
-      auth,
-      request,
-    }: {
-      auth: { user?: unknown };
-      request: Request;
-    }) {
+    authorized({ auth, request }: { auth: any; request: Request }) {
       return !!auth?.user;
     },
+  },
+  pages: {
+    signIn: '/login',
   },
 };
 
 export const {
   auth,
+  signIn,
+  signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
