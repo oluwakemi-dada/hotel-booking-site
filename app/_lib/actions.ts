@@ -32,7 +32,7 @@ export const updateGuest = async (formData: FormData) => {
   if (error) throw new Error('Guest could not be updated');
 };
 
-export const deleteReservation = async (bookingId: string) => {
+export const deleteReservation = async (bookingId: number) => {
   const session = await auth();
   if (!session) throw new Error('You must be logged in');
 
