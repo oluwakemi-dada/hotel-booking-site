@@ -210,3 +210,15 @@ export const createBooking = async (newBooking) => {
 //   }
 //   return data;
 // };
+
+///// DELETE /////
+
+// export const deleteBooking = async (id) => {
+//   const { data, error } = await supabase.from('bookings').delete().eq('id', id);
+
+//   if (error) {
+//     console.error(error);
+//     throw new Error('Booking could not be deleted');
+//   }
+//   return data;
+// };

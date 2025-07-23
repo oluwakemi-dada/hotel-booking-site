@@ -10,9 +10,8 @@ export const metadata = {
 
 const Page = async () => {
   const session = await auth();
+  // @ts-expect-error : superbase is inferring object as array
   const bookings: Booking[] = await getBookings(session?.user.guestId);
-
-  console.log('bookings', bookings);
 
   return (
     <div>
