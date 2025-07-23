@@ -87,7 +87,13 @@ export const getBookings = async (guestId) => {
     throw new Error('Bookings could not get loaded');
   }
 
-  return data;
+  const bookings = data.map((item) => ({
+    ...item,
+    cabin: item.cabins,
+    cabins: undefined,
+  }));
+
+  return bookings;
 };
 
 export const getBookedDatesByCabinId = async (cabinId) => {
@@ -201,18 +207,6 @@ export const createBooking = async (newBooking) => {
 //   if (error) {
 //     console.error(error);
 //     throw new Error('Booking could not be updated');
-//   }
-//   return data;
-// };
-
-///// DELETE /////
-
-// export const deleteBooking = async (id) => {
-//   const { data, error } = await supabase.from('bookings').delete().eq('id', id);
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Booking could not be deleted');
 //   }
 //   return data;
 // };

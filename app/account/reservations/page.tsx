@@ -1,4 +1,6 @@
 import ReservationCard from '@/app/_components/ReservationCard';
+import { auth } from '@/app/_lib/auth';
+import { getBookings } from '@/app/_lib/data-service';
 import { Booking } from '@/app/types';
 import Link from 'next/link';
 
@@ -6,8 +8,11 @@ export const metadata = {
   title: 'Reservations',
 };
 
-const Page = () => {
-  const bookings: Booking[] = [];
+const Page = async () => {
+  const session = await auth();
+  const bookings: Booking[] = await getBookings(session?.user.guestId);
+
+  console.log('bookings', bookings);
 
   return (
     <div>

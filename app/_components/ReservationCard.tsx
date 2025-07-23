@@ -3,6 +3,7 @@ import { format, formatDistance, isPast, isToday, parseISO } from 'date-fns';
 import DeleteReservation from './DeleteReservation';
 import Image from 'next/image';
 import { Booking } from '../types';
+import Link from 'next/link';
 
 export const formatDistanceFromNow = (dateStr: string) =>
   formatDistance(parseISO(dateStr), new Date(), {
@@ -16,15 +17,16 @@ type Props = {
 const ReservationCard = ({ booking }: Props) => {
   const {
     id,
-    // guestId,
+    guestId,
     startDate,
     endDate,
     numNights,
     totalPrice,
     numGuests,
-    // status,
+    status,
+    cabinId,
     created_at,
-    cabins: { name, image },
+    cabin: { name, image },
   } = booking;
 
   return (
@@ -75,14 +77,18 @@ const ReservationCard = ({ booking }: Props) => {
       </div>
 
       <div className="border-primary-800 flex w-[100px] flex-col border-l">
-        <a
-          href={`/account/reservations/edit/${id}`}
-          className="group text-primary-300 border-primary-800 hover:bg-accent-600 hover:text-primary-900 flex flex-grow items-center gap-2 border-b px-3 text-xs font-bold uppercase transition-colors"
-        >
-          <PencilSquareIcon className="text-primary-600 group-hover:text-primary-800 h-5 w-5 transition-colors" />
-          <span className="mt-1">Edit</span>
-        </a>
-        <DeleteReservation bookingId={id} />
+        {!isPast(startDate) && (
+          <>
+            <Link
+              href={`/account/reservations/edit/${id}`}
+              className="group text-primary-300 border-primary-800 hover:bg-accent-600 hover:text-primary-900 flex flex-grow items-center gap-2 border-b px-3 text-xs font-bold uppercase transition-colors"
+            >
+              <PencilSquareIcon className="text-primary-600 group-hover:text-primary-800 h-5 w-5 transition-colors" />
+              <span className="mt-1">Edit</span>
+            </Link>
+            <DeleteReservation bookingId={id} />
+          </>
+        )}
       </div>
     </div>
   );
