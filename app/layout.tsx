@@ -3,6 +3,7 @@ import { Josefin_Sans } from 'next/font/google';
 import Header from '@/app/_components/Header';
 import '@/app/_styles/globals.css';
 import { ReservationProvider } from './_context/ReservationContext';
+import ToastProvider from '@/app/_components/Toaster';
 
 const josefin = Josefin_Sans({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ const RootLayout = ({ children }: Props) => {
       <body
         className={`${josefin.className} bg-primary-950 text-primary-100 relative flex min-h-screen flex-col antialiased`}
       >
+        <ToastProvider />
         <Header />
         <div className="grid flex-1 px-8 py-12">
           <main className="mx-auto w-full max-w-7xl">

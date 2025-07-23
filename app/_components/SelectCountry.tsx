@@ -1,32 +1,32 @@
-import { getCountries } from '@/app/_lib/data-service';
+'use client';
+
+import { Country } from '@/app/types';
 
 type Props = {
-  defaultCountry: string;
-  name: string;
-  id: string;
+  nationality: string;
+  setNationality: (value: string) => void;
+  setCountryFlag: (value: string) => void;
+  countries: Country[];
   className: string;
 };
 
-type Country = {
-  name: string;
-  flag: string;
-};
-
-const SelectCountry = async ({
-  defaultCountry,
-  name,
-  id,
+const SelectCountry = ({
+  nationality,
+  setNationality,
+  setCountryFlag,
+  countries,
   className,
 }: Props) => {
-  const countries: Country[] = await getCountries();
-  const flag =
-    countries.find((country) => country.name === defaultCountry)?.flag ?? '';
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const [name, flag] = e.target.value.split('%');
+    setNationality(name);
+    setCountryFlag(flag);
+  };
 
   return (
     <select
-      name={name}
-      id={id}
-      defaultValue={`${defaultCountry}%${flag}`}
+      value={`${nationality}%${countries.find((c) => c.name === nationality)?.flag ?? ''}`}
+      onChange={handleChange}
       className={className}
     >
       <option value="">Select country...</option>

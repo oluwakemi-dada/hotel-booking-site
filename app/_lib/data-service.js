@@ -175,44 +175,44 @@ export const createBooking = async (newBooking) => {
 ///// UPDATE /////
 
 // The updatedFields is an object which should ONLY contain the updated data
-export const updateGuest = async (id, updatedFields) => {
-  const { data, error } = await supabase
-    .from('guests')
-    .update(updatedFields)
-    .eq('id', id)
-    .select()
-    .single();
+// export const updateGuest = async (id, updatedFields) => {
+//   const { data, error } = await supabase
+//     .from('guests')
+//     .update(updatedFields)
+//     .eq('id', id)
+//     .select()
+//     .single();
 
-  if (error) {
-    console.error(error);
-    throw new Error('Guest could not be updated');
-  }
-  return data;
-};
+//   if (error) {
+//     console.error(error);
+//     throw new Error('Guest could not be updated');
+//   }
+//   return data;
+// };
 
-export const updateBooking = async (id, updatedFields) => {
-  const { data, error } = await supabase
-    .from('bookings')
-    .update(updatedFields)
-    .eq('id', id)
-    .select()
-    .single();
+// export const updateBooking = async (id, updatedFields) => {
+//   const { data, error } = await supabase
+//     .from('bookings')
+//     .update(updatedFields)
+//     .eq('id', id)
+//     .select()
+//     .single();
 
-  if (error) {
-    console.error(error);
-    throw new Error('Booking could not be updated');
-  }
-  return data;
-};
+//   if (error) {
+//     console.error(error);
+//     throw new Error('Booking could not be updated');
+//   }
+//   return data;
+// };
 
 ///// DELETE /////
 
-export const deleteBooking = async (id) => {
-  const { data, error } = await supabase.from('bookings').delete().eq('id', id);
+// export const deleteBooking = async (id) => {
+//   const { data, error } = await supabase.from('bookings').delete().eq('id', id);
 
-  if (error) {
-    console.error(error);
-    throw new Error('Booking could not be deleted');
-  }
-  return data;
-};
+//   if (error) {
+//     console.error(error);
+//     throw new Error('Booking could not be deleted');
+//   }
+//   return data;
+// };

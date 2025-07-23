@@ -1,13 +1,18 @@
 import SelectCountry from '@/app/_components/SelectCountry';
 import UpdateProfileForm from '@/app/_components/UpdateProfileForm';
+import { auth } from '@/app/_lib/auth';
+import { getCountries, getGuest } from '@/app/_lib/data-service';
+import { Country, Guest } from '@/app/types';
 
 export const metadata = {
   title: 'Update profile',
 };
 
-const Page = () => {
-  const nationality = 'portugal';
-  
+const Page = async () => {
+  const session = await auth();
+  const guest: Guest = await getGuest(session?.user?.email);
+  const countries: Country[] = await getCountries();
+
   return (
     <div>
       <h2 className="text-accent-400 mb-4 text-2xl font-semibold">
@@ -19,14 +24,7 @@ const Page = () => {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm>
-        <SelectCountry
-          name="nationality"
-          id="nationality"
-          className="bg-primary-200 text-primary-800 w-full rounded-sm px-5 py-3 shadow-sm"
-          defaultCountry={nationality}
-        />
-      </UpdateProfileForm>
+      <UpdateProfileForm guest={guest} countries={countries} />
     </div>
   );
 };
