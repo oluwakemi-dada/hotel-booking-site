@@ -1,11 +1,11 @@
 'use client';
 
+import { updateGuest } from '@/app/_lib/actions';
 import { useState, useTransition } from 'react';
 import { toast } from 'sonner';
 import { Country, Guest } from '../types';
-import { updateGuest } from '@/app/_lib/actions';
 import SelectCountry from './SelectCountry';
-import { useFormStatus } from 'react-dom';
+import SubmitButton from './SubmitButton';
 
 type Props = {
   guest: Guest;
@@ -101,22 +101,9 @@ const UpdateProfileForm = ({ guest, countries }: Props) => {
       </div>
 
       <div className="flex items-center justify-end gap-6">
-        <Button />
+        <SubmitButton pendingLabel='Updating...'>Update profile</SubmitButton>
       </div>
     </form>
-  );
-};
-
-const Button = () => {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      disabled={pending}
-      className="bg-accent-500 text-primary-800 hover:bg-accent-600 cursor-pointer px-8 py-4 font-semibold transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-    >
-      {pending ? 'Updating...' : 'Update profile'}
-    </button>
   );
 };
 

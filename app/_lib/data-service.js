@@ -195,30 +195,3 @@ export const createBooking = async (newBooking) => {
 //   }
 //   return data;
 // };
-
-// export const updateBooking = async (id, updatedFields) => {
-//   const { data, error } = await supabase
-//     .from('bookings')
-//     .update(updatedFields)
-//     .eq('id', id)
-//     .select()
-//     .single();
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Booking could not be updated');
-//   }
-//   return data;
-// };
-
-///// DELETE /////
-
-// export const deleteBooking = async (id) => {
-//   const { data, error } = await supabase.from('bookings').delete().eq('id', id);
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Booking could not be deleted');
-//   }
-//   return data;
-// };
