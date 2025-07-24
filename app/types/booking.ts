@@ -1,8 +1,8 @@
 export type Booking = {
   id: number;
   created_at: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   numNights: number;
   totalPrice: number;
   numGuests: number;
