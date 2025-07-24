@@ -6,6 +6,7 @@ import { supabase } from './supabase';
 import { getBookings } from './data-service';
 import { redirect } from 'next/navigation';
 import { CreateBookingData } from '@/app/types';
+import { normalizeToDateString } from '@/app/_lib/dates';
 
 export const createBooking = async (
   bookingData: CreateBookingData,
@@ -14,8 +15,14 @@ export const createBooking = async (
   const session = await auth();
   if (!session) throw new Error('You must be logged in');
 
+  // Normalize dates to UTC-safe "YYYY-MM-DD"
+  const startDate = normalizeToDateString(bookingData.startDate);
+  const endDate = normalizeToDateString(bookingData.endDate);
+
   const newBooking = {
     ...bookingData,
+    startDate,
+    endDate,
     guestId: session.user.guestId,
     numGuests: Number(formData.get('numGuests')),
     observations: formData.get('observations')?.slice(0, 1000),
@@ -25,8 +32,6 @@ export const createBooking = async (
     hasBreakfast: false,
     status: 'unconfirmed',
   };
-
-  console.log(bookingData);
 
   const { error } = await supabase.from('bookings').insert([newBooking]);
 

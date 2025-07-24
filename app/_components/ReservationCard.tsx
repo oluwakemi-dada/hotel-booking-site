@@ -20,14 +20,11 @@ type Props = {
 const ReservationCard = ({ booking, onDelete }: Props) => {
   const {
     id,
-    guestId,
     startDate,
     endDate,
     numNights,
     totalPrice,
     numGuests,
-    status,
-    cabinId,
     created_at,
     cabin: { name, image },
   } = booking;

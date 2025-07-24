@@ -9,11 +9,8 @@ type Props = {
 
 const Cabin = ({ cabin }: Props) => {
   const {
-    // id,
     name,
     maxCapacity,
-    // regularPrice,
-    //  discount,
     image,
     description,
   } = cabin;

@@ -1,10 +1,7 @@
 import Cabin from '@/app/_components/Cabin';
 import Reservation from '@/app/_components/Reservation';
 import Spinner from '@/app/_components/Spinner';
-import {
-  getCabin,
-  getCabins
-} from '@/app/_lib/data-service';
+import { getCabin, getCabins } from '@/app/_lib/data-service';
 import { Suspense } from 'react';
 
 type Props = {
@@ -34,16 +31,7 @@ export const generateStaticParams = async () => {
 const Page = async ({ params }: Props) => {
   const { cabinId } = await params;
   const cabin = await getCabin(cabinId);
-
-  const {
-    // id,
-    name,
-    maxCapacity,
-    // regularPrice,
-    //  discount,
-    image,
-    description,
-  } = cabin;
+  const { name } = cabin;
 
   return (
     <div className="mx-auto mt-8 max-w-6xl">

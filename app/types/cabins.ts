@@ -5,7 +5,7 @@ export type Cabin = {
   maxCapacity: number;
   name: string;
   regularPrice: number;
-  description: string;
+  description?: string;
 };
 
 export type Settings = {

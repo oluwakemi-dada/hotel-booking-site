@@ -1,13 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 type Props = {
-  children: string;
+  children: ReactNode;
 };
 
 const TextExpander = ({ children }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  if (typeof children !== 'string') {
+    return null;
+  }
+
   const displayText = isExpanded
     ? children
     : children.split(' ').slice(0, 40).join(' ') + '...';
