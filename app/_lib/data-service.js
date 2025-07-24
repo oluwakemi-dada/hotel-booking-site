@@ -2,8 +2,6 @@ import { eachDayOfInterval } from 'date-fns';
 import { notFound } from 'next/navigation';
 import { supabase } from './supabase';
 
-///// GET /////
-
 export const getCabin = async (id) => {
   const { data, error } = await supabase
     .from('cabins')
@@ -149,8 +147,6 @@ export const getCountries = async () => {
   }
 };
 
-///// CREATE /////
-
 export const createGuest = async (newGuest) => {
   const { data, error } = await supabase.from('guests').insert([newGuest]);
 
@@ -161,37 +157,3 @@ export const createGuest = async (newGuest) => {
 
   return data;
 };
-
-export const createBooking = async (newBooking) => {
-  const { data, error } = await supabase
-    .from('bookings')
-    .insert([newBooking])
-    // So that the newly created object gets returned!
-    .select()
-    .single();
-
-  if (error) {
-    console.error(error);
-    throw new Error('Booking could not be created');
-  }
-
-  return data;
-};
-
-///// UPDATE /////
-
-// The updatedFields is an object which should ONLY contain the updated data
-// export const updateGuest = async (id, updatedFields) => {
-//   const { data, error } = await supabase
-//     .from('guests')
-//     .update(updatedFields)
-//     .eq('id', id)
-//     .select()
-//     .single();
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Guest could not be updated');
-//   }
-//   return data;
-// };
