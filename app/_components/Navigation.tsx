@@ -32,7 +32,7 @@ const Navigation = async () => {
               <img
                 src={session.user.image}
                 className="h-8 rounded-full"
-                alt={session?.user?.name}
+                alt={session?.user?.name ?? 'user image'}
                 referrerPolicy="no-referrer"
               />
               <span>Guest area</span>

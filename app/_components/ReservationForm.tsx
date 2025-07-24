@@ -5,7 +5,6 @@ import { useReservation } from '@/app/_context/ReservationContext';
 import { differenceInDays } from 'date-fns';
 import { createBooking } from '@/app/_lib/actions';
 import SubmitButton from './SubmitButton';
-import { useEffect } from 'react';
 
 type Props = {
   cabin: Cabin;
