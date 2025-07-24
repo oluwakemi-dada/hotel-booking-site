@@ -21,8 +21,8 @@ const ReservationForm = ({ cabin, user }: Props) => {
   const cabinPrice = numNights * (regularPrice - discount);
 
   const bookingData = {
-    startDate,
-    endDate,
+    startDate: startDate?.toISOString() ?? '',
+    endDate: endDate?.toISOString() ?? '',
     numNights,
     cabinPrice,
     cabinId: id,
@@ -39,8 +39,8 @@ const ReservationForm = ({ cabin, user }: Props) => {
           <img
             referrerPolicy="no-referrer"
             className="h-8 rounded-full"
-            src={user.image}
-            alt={user.name}
+            src={user.image ?? ''}
+            alt={user.name ?? 'user avatar'}
           />
           <p>{user.name}</p>
         </div>
